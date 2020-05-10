@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import net.rptools.lib.image.ImageUtil;
+import net.rptools.lib.swing.AlphaForegroundIcon;
 import net.rptools.lib.swing.SwingUtil;
 import net.rptools.maptool.client.ScreenPoint;
 import net.rptools.maptool.client.ui.zone.ZoneOverlay;
@@ -54,13 +55,13 @@ public class MeasureTool extends DefaultTool implements ZoneOverlay {
   private static javafx.scene.Cursor measureCursorFX;
 
   private static final String PATH_RULER_IMG =
-      "net/rptools/maptool/client/image/tool/ruler-blue.png";
+      "net/rptools/maptool/client/image/toolbar-measure.png";
   private static final String PATH_MEASURE_IMG =
       "net/rptools/maptool/client/image/cursor-tape-measure.png";
 
   public MeasureTool() {
     try {
-      setIcon(new ImageIcon(ImageUtil.getImage(PATH_RULER_IMG)));
+      setIcon(new AlphaForegroundIcon(PATH_RULER_IMG));
       measureCursor =
           Toolkit.getDefaultToolkit()
               .createCustomCursor(

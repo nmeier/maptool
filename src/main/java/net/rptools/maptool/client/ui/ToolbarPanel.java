@@ -38,6 +38,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.plaf.basic.BasicToolBarUI;
 import net.rptools.lib.image.ImageUtil;
+import net.rptools.lib.swing.AlphaForegroundIcon;
 import net.rptools.maptool.client.MapTool;
 import net.rptools.maptool.client.functions.MediaPlayerAdapter;
 import net.rptools.maptool.client.tool.AI_Tool;
@@ -102,8 +103,7 @@ public class ToolbarPanel extends JToolBar {
     final OptionPanel pointerGroupOptionPanel = createPointerPanel();
     final JToggleButton pointerGroupButton =
         createButton(
-            "net/rptools/maptool/client/image/tool/pointer-blue.png",
-            "net/rptools/maptool/client/image/tool/pointer-blue-off.png",
+            "net/rptools/maptool/client/image/toolbar-pointer.png",
             pointerGroupOptionPanel,
             I18N.getText("tools.interaction.tooltip"));
 
@@ -128,26 +128,22 @@ public class ToolbarPanel extends JToolBar {
     add(pointerGroupButton);
     add(
         createButton(
-            "net/rptools/maptool/client/image/tool/draw-blue.png",
-            "net/rptools/maptool/client/image/tool/draw-blue-off.png",
+            "net/rptools/maptool/client/image/toolbar-palette.png",
             createDrawPanel(),
             I18N.getText("tools.drawing.tooltip")));
     add(
         createButton(
-            "net/rptools/maptool/client/image/tool/temp-blue.png",
-            "net/rptools/maptool/client/image/tool/temp-blue-off.png",
+            "net/rptools/maptool/client/image/toolbar-stamp.png",
             createTemplatePanel(),
             I18N.getText("tools.template.tooltip")));
     add(
         createButton(
-            "net/rptools/maptool/client/image/tool/fog-blue.png",
-            "net/rptools/maptool/client/image/tool/fog-blue-off.png",
+            "net/rptools/maptool/client/image/toolbar-fog.png",
             createFogPanel(),
             I18N.getText("tools.fog.tooltip")));
     add(
         createButton(
-            "net/rptools/maptool/client/image/tool/eye-blue.png",
-            "net/rptools/maptool/client/image/tool/eye-blue-off.png",
+            "net/rptools/maptool/client/image/toolbar-sight.png",
             createTopologyPanel(),
             I18N.getText("tools.topo.tooltip")));
     add(vertSplit);
@@ -354,7 +350,7 @@ public class ToolbarPanel extends JToolBar {
   }
 
   private JToggleButton createButton(
-      final String icon, final String offIcon, final OptionPanel panel, String tooltip) {
+      final String icon, final OptionPanel panel, String tooltip) {
     final JToggleButton button = new JToggleButton();
     button.setToolTipText(tooltip);
     button.addActionListener(
@@ -366,12 +362,7 @@ public class ToolbarPanel extends JToolBar {
             }
           }
         });
-    try {
-      button.setIcon(new ImageIcon(ImageUtil.getImage(offIcon)));
-      button.setSelectedIcon(new ImageIcon(ImageUtil.getImage(icon)));
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
+    button.setIcon(new AlphaForegroundIcon(icon));
     optionPanel.add(panel, icon);
     buttonGroup.add(button);
     return button;

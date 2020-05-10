@@ -36,6 +36,7 @@ import java.util.Map.Entry;
 import javax.swing.*;
 import net.rptools.lib.MD5Key;
 import net.rptools.lib.image.ImageUtil;
+import net.rptools.lib.swing.AlphaForegroundIcon;
 import net.rptools.lib.swing.SwingUtil;
 import net.rptools.maptool.client.*;
 import net.rptools.maptool.client.swing.HTMLPanelRenderer;
@@ -106,15 +107,8 @@ public class PointerTool extends DefaultTool implements ZoneOverlay {
   private int dragStartY = 0;
 
   public PointerTool() {
-    try {
       setIcon(
-          new ImageIcon(
-              ImageUtil.getImage("net/rptools/maptool/client/image/tool/pointer-blue.png")));
-    } catch (IOException ioe) {
-      ioe.printStackTrace();
-    }
-    htmlRenderer.setBackground(new Color(0, 0, 0, 200));
-    htmlRenderer.setForeground(Color.black);
+              new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-pointer.png"));
     htmlRenderer.setOpaque(false);
     htmlRenderer.addStyleSheetRule("body{color:black}");
     htmlRenderer.addStyleSheetRule(".title{font-size: 14pt}");

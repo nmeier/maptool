@@ -27,9 +27,9 @@ import java.util.Set;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import net.rptools.lib.swing.AlphaForegroundIcon;
 import net.rptools.lib.swing.SwingUtil;
 import net.rptools.maptool.client.AppPreferences;
-import net.rptools.maptool.client.AppStyle;
 import net.rptools.maptool.client.AppUtil;
 import net.rptools.maptool.client.MapTool;
 import net.rptools.maptool.client.ui.zone.ZoneRenderer;
@@ -133,12 +133,13 @@ public class InitiativePanel extends JPanel
 
     popupMenu = new JPopupMenu();
     toolBar.add(
-        SwingUtil.makePopupMenuButton(new JButton(new ImageIcon(AppStyle.arrowMenu)), popupMenu));
+        SwingUtil.makePopupMenuButton(
+            new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-menu.png")), popupMenu));
 
-    toolBar.add(new TextlessButton(PREV_ACTION));
-    toolBar.add(new TextlessButton(TOGGLE_HOLD_ACTION));
-    toolBar.add(new TextlessButton(NEXT_ACTION));
-    toolBar.add(new TextlessButton(RESET_COUNTER_ACTION));
+    toolBar.add(new TextlessButton(PREV_ACTION, "net/rptools/maptool/client/image/toolbar-previous.png"));
+    toolBar.add(new TextlessButton(TOGGLE_HOLD_ACTION, "net/rptools/maptool/client/image/toolbar-pause.png"));
+    toolBar.add(new TextlessButton(NEXT_ACTION, "net/rptools/maptool/client/image/toolbar-next.png"));
+    toolBar.add(new TextlessButton(RESET_COUNTER_ACTION, "net/rptools/maptool/client/image/toolbar-reset.png"));
 
     round = new JLabel("", SwingConstants.LEFT);
     toolBar.add(Box.createHorizontalGlue());
@@ -168,12 +169,7 @@ public class InitiativePanel extends JPanel
     ActionMap map = displayList.getActionMap();
     map.put("REMOVE_TOKEN_ACTION", REMOVE_TOKEN_ACTION);
 
-    // Set action text and icons
-    PREV_ACTION.putValue(Action.SMALL_ICON, new ImageIcon(AppStyle.arrowLeft));
-    TOGGLE_HOLD_ACTION.putValue(Action.SMALL_ICON, new ImageIcon(AppStyle.arrowHold));
-    NEXT_ACTION.putValue(Action.SMALL_ICON, new ImageIcon(AppStyle.arrowRight));
-    RESET_COUNTER_ACTION.putValue(Action.SMALL_ICON, new ImageIcon(AppStyle.arrowRotateClockwise));
-
+    // Set action text
     I18N.setAction("initPanel.sort", SORT_LIST_ACTION);
     I18N.setAction("initPanel.toggleHold", TOGGLE_HOLD_ACTION);
     I18N.setAction("initPanel.makeCurrent", MAKE_CURRENT_ACTION);
@@ -198,9 +194,10 @@ public class InitiativePanel extends JPanel
   }
 
   private static class TextlessButton extends JButton {
-    TextlessButton(Action action) {
+    TextlessButton(Action action, String iconPath) {
       setHideActionText(true);
       setAction(action);
+      setIcon(new AlphaForegroundIcon(iconPath));
     }
   }
   /*---------------------------------------------------------------------------------------------

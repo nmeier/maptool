@@ -18,7 +18,8 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
-import net.rptools.maptool.client.AppStyle;
+
+import net.rptools.lib.swing.AlphaForegroundIcon;
 import net.rptools.maptool.client.MapTool;
 import net.rptools.maptool.client.ui.zone.ZoneRenderer;
 import net.rptools.maptool.language.I18N;
@@ -38,8 +39,7 @@ public class MenuButtonsPanel extends JToolBar {
   }
 
   private void addSelectAllButton() {
-    ImageIcon i = new ImageIcon(AppStyle.arrowOut);
-    JButton label = new JButton(i);
+    JButton label = new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-check.png"));
     label.addMouseListener(
         new MouseAdapter() {
           public void mouseReleased(MouseEvent event) {
@@ -57,8 +57,7 @@ public class MenuButtonsPanel extends JToolBar {
   }
 
   private void addDeselectAllButton() {
-    ImageIcon i3 = new ImageIcon(AppStyle.arrowIn);
-    JButton label3 = new JButton(i3);
+    JButton label3 = new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-cancel.png"));
     label3.addMouseListener(
         new MouseAdapter() {
           public void mouseReleased(MouseEvent event) {
@@ -75,8 +74,7 @@ public class MenuButtonsPanel extends JToolBar {
   }
 
   private void addRevertToPreviousButton() {
-    ImageIcon i1 = new ImageIcon(AppStyle.arrowRotateClockwise);
-    JButton label1 = new JButton(i1);
+    JButton label1 = new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-reset.png"));
     label1.addMouseListener(
         new MouseAdapter() {
           public void mouseReleased(MouseEvent event) {
@@ -92,8 +90,7 @@ public class MenuButtonsPanel extends JToolBar {
   }
 
   private void addSelectNextButton() {
-    ImageIcon i1 = new ImageIcon(AppStyle.arrowRight);
-    JButton label1 = new JButton(i1);
+    JButton label1 = new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-next.png"));
     label1.addMouseListener(
         new MouseAdapter() {
           public void mouseReleased(MouseEvent event) {
@@ -109,8 +106,7 @@ public class MenuButtonsPanel extends JToolBar {
   }
 
   private void addSelectPreviousButton() {
-    ImageIcon i1 = new ImageIcon(AppStyle.arrowLeft);
-    JButton label1 = new JButton(i1);
+    JButton label1 = new JButton(new AlphaForegroundIcon("net/rptools/maptool/client/image/toolbar-previous.png"));
     label1.addMouseListener(
         new MouseAdapter() {
           public void mouseReleased(MouseEvent event) {
